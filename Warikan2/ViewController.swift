@@ -15,6 +15,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     var groupArray: [Dictionary<String, String>] = []
     //var memberArray: [String] = []
     //var ratioArray: [String] = []
+    //override var title: [String, String]
     
     let saveData = UserDefaults.standard
     
@@ -67,6 +68,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
            return cell
        }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            groupArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            saveData.set(groupArray, forKey: "group")
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+     //selectedText = groupArray[indexPath.row]
+     //print("\(indexPath.row)番のセルを選択しました！ ")
+     //print("\(todoArray[indexPath.row])を選択しました！ ")
+     
+     let word = groupArray[indexPath.row]
+     let num = indexPath.row
+        //print(word)
+        //print(num)
+     saveData.set(word, forKey: "change")
+     saveData.set(num, forKey: "number")
+     performSegue(withIdentifier: "edit", sender: nil)
+    }
     
     @IBAction func go() {
         saveData.set(String(totalTextField.text!), forKey: "total")

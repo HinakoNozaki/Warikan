@@ -116,7 +116,7 @@
                     <connections>
                         <outlet property="tableView" destination="y2M-Qd-G7v" id="Daq-Ts-I8y"/>
                         <outlet property="totalTextField" destination="uce-uN-c7E" id="5Pl-dd-qrL"/>
-                        <segue destination="lnl-5M-hMl" kind="presentation" modalPresentationStyle="fullScreen" id="Rb8-kA-0Mf"/>
+                        <segue destination="lnl-5M-hMl" kind="presentation" identifier="edit" modalPresentationStyle="fullScreen" id="Rb8-kA-0Mf"/>
                         <segue destination="2OF-us-JCF" kind="presentation" identifier="account" modalPresentationStyle="fullScreen" id="Xh7-ew-Rja"/>
                     </connections>
                 </viewController>
@@ -348,6 +348,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="DHT-5E-9F8"/>
+        <segue reference="Rb8-kA-0Mf"/>
     </inferredMetricsTieBreakers>
 </document>

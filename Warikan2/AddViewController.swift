@@ -23,6 +23,14 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if saveData.dictionary(forKey: "change") != nil {
+            //groupTextField.text = saveData.string(forKey: "change")
+            let dic = saveData.dictionary(forKey: "change")
+            groupTextField.text = dic?["group"] as? String
+            memberTextField.text = dic?["member"] as? String
+            ratioTextField.text = dic?["ratio"] as? String
+            saveData.removeObject(forKey: "change")
+        }
         if saveData.array(forKey: "group") != nil {
             groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
         }
@@ -42,8 +50,16 @@ class AddViewController: UIViewController {
     
     @IBAction func save() {
         let groupDictionary = ["group": groupTextField.text!, "member":String(memberTextField.text!), "ratio":String(ratioTextField.text!)]
-        groupArray.append(groupDictionary)
         
+        if saveData.string(forKey: "number") != nil {
+            let num: Int = saveData.integer(forKey: "number")
+            groupArray[num] = groupDictionary
+            //print(groupDictionary)
+            //print(groupArray[num])
+            saveData.removeObject(forKey: "number")
+        }else {
+        groupArray.append(groupDictionary)
+        }
         //memberArray.append(memberTextField.text!)
         //ratioArray.append(ratioTextField.text!)
         saveData.set(groupArray, forKey: "group")
