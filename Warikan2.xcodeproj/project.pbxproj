@@ -15,6 +15,10 @@
 		BB2637942343211000297F1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2637922343211000297F1A /* LaunchScreen.storyboard */; };
 		BB26379F2343211000297F1A /* Warikan2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26379E2343211000297F1A /* Warikan2Tests.swift */; };
 		BB2637AA2343211000297F1A /* Warikan2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637A92343211000297F1A /* Warikan2UITests.swift */; };
+		BB2637B82346C88800297F1A /* AddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637B72346C88700297F1A /* AddViewController.swift */; };
+		BB2637BA2346CA7400297F1A /* CalculationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637B92346CA7400297F1A /* CalculationViewController.swift */; };
+		BB2637C22347816500297F1A /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637C12347816500297F1A /* ListTableViewCell.swift */; };
+		BB2637C823488C4700297F1A /* CalculationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637C723488C4700297F1A /* CalculationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		BB2637A52343211000297F1A /* Warikan2UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Warikan2UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB2637A92343211000297F1A /* Warikan2UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Warikan2UITests.swift; sourceTree = "<group>"; };
 		BB2637AB2343211000297F1A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB2637B72346C88700297F1A /* AddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddViewController.swift; sourceTree = "<group>"; };
+		BB2637B92346CA7400297F1A /* CalculationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationViewController.swift; sourceTree = "<group>"; };
+		BB2637C12347816500297F1A /* ListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
+		BB2637C723488C4700297F1A /* CalculationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +114,10 @@
 				BB2637902343211000297F1A /* Assets.xcassets */,
 				BB2637922343211000297F1A /* LaunchScreen.storyboard */,
 				BB2637952343211000297F1A /* Info.plist */,
+				BB2637B72346C88700297F1A /* AddViewController.swift */,
+				BB2637B92346CA7400297F1A /* CalculationViewController.swift */,
+				BB2637C12347816500297F1A /* ListTableViewCell.swift */,
+				BB2637C723488C4700297F1A /* CalculationTableViewCell.swift */,
 			);
 			path = Warikan2;
 			sourceTree = "<group>";
@@ -260,8 +272,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB26378C2343210D00297F1A /* ViewController.swift in Sources */,
+				BB2637BA2346CA7400297F1A /* CalculationViewController.swift in Sources */,
 				BB2637882343210D00297F1A /* AppDelegate.swift in Sources */,
+				BB2637B82346C88800297F1A /* AddViewController.swift in Sources */,
 				BB26378A2343210D00297F1A /* SceneDelegate.swift in Sources */,
+				BB2637C22347816500297F1A /* ListTableViewCell.swift in Sources */,
+				BB2637C823488C4700297F1A /* CalculationTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

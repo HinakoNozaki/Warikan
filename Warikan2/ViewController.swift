@@ -8,13 +8,71 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet weak var totalTextField: UITextField!
+    
+    var groupArray: [Dictionary<String, String>] = []
+    //var memberArray: [String] = []
+    //var ratioArray: [String] = []
+    
+    let saveData = UserDefaults.standard
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        saveData.removeObject(forKey: "group")
+        
         // Do any additional setup after loading the view.
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+             super.viewWillAppear(true)
+        if saveData.array(forKey: "group") != nil {
+            groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
+        }
+        
+        tableView.reloadData()
+            
+        
+    //        tableView.estimatedRowHeight = 100
+    //        tableView.rowHeight = UITableView.automaticDimension
+        }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+           // #warning Incomplete implementation, return the number of sections
+           return 1
+       }
 
+       func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+           // #warning Incomplete implementation, return the number of rows
+        return groupArray.count
+       }
+
+       
+       func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+           let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListTableViewCell
+           
+           let nowIndexPathDictionary = groupArray[indexPath.row]
+           //cell.todoLabel.text = nowIndexPathDictionary
+           
+           cell.groupLabel.text = nowIndexPathDictionary["group"]
+            cell.memberLabel.text = nowIndexPathDictionary["member"]
+            cell.ratioLabel.text = nowIndexPathDictionary["ratio"]
+
+           // Configure the cell...
+
+           return cell
+       }
+    
+    @IBAction func go() {
+        saveData.set(String(totalTextField.text!), forKey: "total")
+        //print(totalTextField.text!)
+        
+        self.performSegue(withIdentifier: "account", sender: nil)
+    }
 }
 
