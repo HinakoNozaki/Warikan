@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AddViewController: UIViewController {
+class AddViewController: UIViewController, UITextFieldDelegate  {
     @IBOutlet weak var groupTextField: UITextField!
     @IBOutlet weak var memberTextField: UITextField!
     @IBOutlet weak var ratioTextField: UITextField!
@@ -23,6 +23,9 @@ class AddViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        groupTextField.delegate = self
+        self.memberTextField.keyboardType = UIKeyboardType.numberPad
+        self.ratioTextField.keyboardType = UIKeyboardType.numberPad
         if saveData.dictionary(forKey: "change") != nil {
             //groupTextField.text = saveData.string(forKey: "change")
             let dic = saveData.dictionary(forKey: "change")
@@ -46,6 +49,15 @@ class AddViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        groupTextField.resignFirstResponder()
+        return true
     }
     
     @IBAction func save() {

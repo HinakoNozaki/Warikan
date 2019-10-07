@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         saveData.removeObject(forKey: "group")
         
+        self.totalTextField.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view.
     }
 
@@ -91,6 +92,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
      performSegue(withIdentifier: "edit", sender: nil)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+     
     @IBAction func go() {
         saveData.set(String(totalTextField.text!), forKey: "total")
         //print(totalTextField.text!)
