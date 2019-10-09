@@ -22,7 +22,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         groupTextField.delegate = self
         self.memberTextField.keyboardType = UIKeyboardType.numberPad
         self.ratioTextField.keyboardType = UIKeyboardType.numberPad
@@ -38,11 +38,11 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
             groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
         }
         /*if saveData.array(forKey: "member") != nil {
-            memberArray = saveData.array(forKey: "member") as! [String]
-        }
-        if saveData.array(forKey: "ratio") != nil {
-            ratioArray = saveData.array(forKey: "ratio") as! [String]
-        }*/
+         memberArray = saveData.array(forKey: "member") as! [String]
+         }
+         if saveData.array(forKey: "ratio") != nil {
+         ratioArray = saveData.array(forKey: "ratio") as! [String]
+         }*/
         // Do any additional setup after loading the view.
     }
     
@@ -70,7 +70,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
             //print(groupArray[num])
             saveData.removeObject(forKey: "number")
         }else {
-        groupArray.append(groupDictionary)
+            groupArray.append(groupDictionary)
         }
         //memberArray.append(memberTextField.text!)
         //ratioArray.append(ratioTextField.text!)
@@ -86,13 +86,13 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

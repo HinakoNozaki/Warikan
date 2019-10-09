@@ -19,7 +19,9 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     
     var bunbo: Int = 0
     var total: String = ""
+    var firstTotal: Int = 0
     var nowTotal: Int = 0
+    //var nowChange: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +31,8 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         
         if saveData.string(forKey: "total") != nil {
             total = saveData.string(forKey: "total")!
-               saveData.removeObject(forKey: "total")
-           }
+            saveData.removeObject(forKey: "total")
+        }
         //cell.todoLabel.text = nowIndexPathDictionary
         //var bunbo: Int = 0
         
@@ -38,7 +40,7 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     override func viewWillAppear(_ animated: Bool) {
-             super.viewWillAppear(true)
+        super.viewWillAppear(true)
         if saveData.array(forKey: "group") != nil {
             groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
         }
@@ -47,70 +49,95 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         
         
         for i in 0..<groupArray.count{
-            let nowIndexPathDictionary = groupArray[i]
-            bunbo += (Int(nowIndexPathDictionary["member"]!) ?? 0)*(Int(nowIndexPathDictionary["ratio"]!) ?? 0)
+            let groupInformation = groupArray[i]
+            bunbo += (Int(groupInformation["member"]!) ?? 0)*(Int(groupInformation["ratio"]!) ?? 0)
         }
         //print(bunbo)
         
-            
-    //        tableView.estimatedRowHeight = 100
-    //        tableView.rowHeight = UITableView.automaticDimension
-        }
+        
+        //        tableView.estimatedRowHeight = 100
+        //        tableView.rowHeight = UITableView.automaticDimension
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         
-     return groupArray.count
+        return groupArray.count
     }
-
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "calculation", for: indexPath) as! CalculationTableViewCell
-        /*
-        if saveData.string(forKey: "total") != nil {
-        let total = saveData.string(forKey: "total")
-               saveData.removeObject(forKey: "total")
-           }
         
-        for i in 0..<groupArray.count{
-            
-        }*/
+        var upClosure = { (member: String) -> Void in
+               //totalLabel.text = 1
+            let nowTotalLabel = Int(self.totalLabel.text!)
+            self.totalLabel.text = String(nowTotalLabel! + Int(member)!)
+            let nowChangeLabel = Int(self.changeLabel.text!)
+            self.changeLabel.text = String(nowChangeLabel! + Int(member)!)
+                  }
+        var downClosure = { (member: String) -> Void in
+           //totalLabel.text = 1
+        let nowTotalLabel = Int(self.totalLabel.text!)
+        self.totalLabel.text = String(nowTotalLabel! - Int(member)!)
+        let nowChangeLabel = Int(self.changeLabel.text!)
+        self.changeLabel.text = String(nowChangeLabel! - Int(member)!)
+              }
+        /*
+         if saveData.string(forKey: "total") != nil {
+         let total = saveData.string(forKey: "total")
+         saveData.removeObject(forKey: "total")
+         }
+         
+         for i in 0..<groupArray.count{
+         
+         }*/
         //print(total)
         
         
-        let nowIndexPathDictionary = groupArray[indexPath.row]
-        let ratio: Int = (Int(nowIndexPathDictionary["ratio"]!) ?? 0)
-        var money: Int = (Int(total) ?? 0) * ratio/bunbo
-        cell.groupLabel.text = nowIndexPathDictionary["group"]
-         cell.moneyLabel.text = String(money)
-         cell.memberLabel.text = nowIndexPathDictionary["member"]
+        let groupInformation = groupArray[indexPath.row]
+        let ratio: Int = (Int(groupInformation["ratio"]!) ?? 0)
+        let money: Int = (Int(total) ?? 0) * ratio/bunbo
+        cell.groupLabel.text = groupInformation["group"]
+        cell.moneyLabel.text = String(money)
+        cell.memberLabel.text = groupInformation["member"]
         
-        nowTotal+=money*(Int(nowIndexPathDictionary["member"]!) ?? 0)
+        firstTotal+=money*(Int(groupInformation["member"]!) ?? 0)
         //print(nowTotal)
-        totalLabel.text = String(nowTotal)
-        changeLabel.text = String(nowTotal-(Int(total) ?? 0))
+        totalLabel.text = String(firstTotal)
+        changeLabel.text = String(firstTotal-(Int(total) ?? 0))
         
+        cell.upClosure=upClosure
+        cell.downClosure=downClosure
         
-        
-
+       
+        //closure()
+       
         // Configure the cell...
-
+        
         return cell
     }
     
+    
+    //let closure = { print("クロージャテスト") }
+    
+    
+    
+    
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }

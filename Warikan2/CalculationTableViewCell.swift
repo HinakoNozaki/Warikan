@@ -14,7 +14,9 @@ class CalculationTableViewCell: UITableViewCell {
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var memberLabel: UILabel!
     
-    
+    var upClosure: ((String)->Void)?
+    var downClosure: ((String)->Void)?
+     //var closure = { (num1: Int) -> Int in return num1}
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -27,10 +29,13 @@ class CalculationTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    //let closure = { print("クロージャテスト") }
     
     @IBAction func up(_ sender: UIButton) {
         if let now = Int(moneyLabel.text!) {
             moneyLabel.text = String(now + 1)
+            upClosure?(memberLabel.text!)
+            //print(closure?(memberLabel.text!) as Any)
         } else {
             moneyLabel.text = String(1)
         }
@@ -39,6 +44,7 @@ class CalculationTableViewCell: UITableViewCell {
     @IBAction func down(_ sender: UIButton) {
         if let now = Int(moneyLabel.text!) {
             moneyLabel.text = String(now - 1)
+            downClosure?(memberLabel.text!)
         } else {
             moneyLabel.text = String(1)
         }
