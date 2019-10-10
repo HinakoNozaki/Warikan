@@ -17,7 +17,7 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     
     let saveData = UserDefaults.standard
     
-   
+    
     
     var bunbo: Int = 0
     //var totalMember: Int = 0
@@ -58,7 +58,7 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
             //totalMember += Int(groupInformation["member"]!) ?? 0
             //print(totalMember)
             if bunbo == 0{
-               bunbo = 1
+                bunbo = 1
             }
         }
         //print(bunbo)
@@ -84,19 +84,19 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         let cell = tableView.dequeueReusableCell(withIdentifier: "calculation", for: indexPath) as! CalculationTableViewCell
         
         var upClosure = { (member: String) -> Void in
-               //totalLabel.text = 1
+            //totalLabel.text = 1
             let nowTotalLabel = Int(self.totalLabel.text!)
             self.totalLabel.text = String(nowTotalLabel! + Int(member)!)
             let nowChangeLabel = Int(self.changeLabel.text!)
             self.changeLabel.text = String(nowChangeLabel! + Int(member)!)
-                  }
+        }
         var downClosure = { (member: String) -> Void in
-           //totalLabel.text = 1
-        let nowTotalLabel = Int(self.totalLabel.text!)
-        self.totalLabel.text = String(nowTotalLabel! - Int(member)!)
-        let nowChangeLabel = Int(self.changeLabel.text!)
-        self.changeLabel.text = String(nowChangeLabel! - Int(member)!)
-              }
+            //totalLabel.text = 1
+            let nowTotalLabel = Int(self.totalLabel.text!)
+            self.totalLabel.text = String(nowTotalLabel! - Int(member)!)
+            let nowChangeLabel = Int(self.changeLabel.text!)
+            self.changeLabel.text = String(nowChangeLabel! - Int(member)!)
+        }
         /*
          if saveData.string(forKey: "total") != nil {
          let total = saveData.string(forKey: "total")
@@ -124,9 +124,9 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         cell.upClosure=upClosure
         cell.downClosure=downClosure
         
-       
+        
         //closure()
-       
+        
         // Configure the cell...
         
         return cell

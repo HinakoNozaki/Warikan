@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         //super.viewWillAppear(true)
         super.viewWillAppear(animated)
         self.configureObserver()
-         if saveData.integer(forKey: "reset") == 1 {
+        if saveData.integer(forKey: "reset") == 1 {
             groupArray = []
             totalTextField.text = ""
             saveData.removeObject(forKey: "reset")
@@ -77,7 +77,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let nowIndexPathDictionary = groupArray[indexPath.row]
         //cell.todoLabel.text = nowIndexPathDictionary
         
-       
+        
         cell.groupLabel.text = nowIndexPathDictionary["group"]
         cell.memberLabel.text = nowIndexPathDictionary["member"]
         cell.ratioLabel.text = nowIndexPathDictionary["ratio"]
@@ -163,10 +163,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             ))
             present(alert, animated: true, completion: nil)
         }else{
-        saveData.set(String(totalTextField.text!), forKey: "total")
-        //print(totalTextField.text!)
-        self.view.endEditing(true)
-        self.performSegue(withIdentifier: "account", sender: nil)
+            saveData.set(String(totalTextField.text!), forKey: "total")
+            //print(totalTextField.text!)
+            self.view.endEditing(true)
+            self.performSegue(withIdentifier: "account", sender: nil)
         }
     }
 }
