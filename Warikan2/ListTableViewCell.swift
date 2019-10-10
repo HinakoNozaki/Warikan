@@ -14,6 +14,8 @@ class ListTableViewCell: UITableViewCell {
     @IBOutlet var memberLabel: UILabel!
     @IBOutlet var ratioLabel: UILabel!
     
+   
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -17,10 +17,14 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     
     let saveData = UserDefaults.standard
     
+   
+    
     var bunbo: Int = 0
+    //var totalMember: Int = 0
     var total: String = ""
     var firstTotal: Int = 0
     var nowTotal: Int = 0
+    //var zerowari: Int = 0
     //var nowChange: Int = 0
     
     override func viewDidLoad() {
@@ -51,6 +55,11 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         for i in 0..<groupArray.count{
             let groupInformation = groupArray[i]
             bunbo += (Int(groupInformation["member"]!) ?? 0)*(Int(groupInformation["ratio"]!) ?? 0)
+            //totalMember += Int(groupInformation["member"]!) ?? 0
+            //print(totalMember)
+            if bunbo == 0{
+               bunbo = 1
+            }
         }
         //print(bunbo)
         
@@ -124,6 +133,15 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     
+    @IBAction func reset(_ sender: Any) {
+        saveData.removeObject(forKey: "group")
+        //saveData.removeObject(forKey: "total")
+        let hantei: Int = 1
+        saveData.set(hantei, forKey: "reset")
+        //navigationController?.popViewController(animated: true)
+        self.dismiss(animated: true, completion: nil)
+        
+    }
     //let closure = { print("クロージャテスト") }
     
     

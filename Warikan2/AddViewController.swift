@@ -83,6 +83,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
         ratioTextField.text = ""
         
         self.dismiss(animated: true, completion: nil)
+        //navigationController?.popViewController(animated: true)
     }
     
     /*

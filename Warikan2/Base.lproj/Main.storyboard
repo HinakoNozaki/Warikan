@@ -242,10 +242,21 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U45-MF-wlx">
+                                <rect key="frame" x="20" y="798" width="374" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="リセット"/>
+                                <connections>
+                                    <action selector="reset:" destination="2OF-us-JCF" eventType="touchUpInside" id="Anq-61-5Wy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="jjy-1s-Plk"/>
                     </view>
+                    <navigationItem key="navigationItem" id="pGO-2w-g5L"/>
                     <connections>
                         <outlet property="changeLabel" destination="bih-3I-xRz" id="UVf-Xt-mzI"/>
                         <outlet property="tableView" destination="e3O-9Y-ZUA" id="glZ-SL-PnO"/>

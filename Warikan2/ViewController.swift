@@ -31,13 +31,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         totalTextField.delegate = self as? UITextFieldDelegate
         self.totalTextField.keyboardType = UIKeyboardType.numberPad
         // Do any additional setup after loading the view.
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         //super.viewWillAppear(true)
         super.viewWillAppear(animated)
         self.configureObserver()
-        if saveData.array(forKey: "group") != nil {
+         if saveData.integer(forKey: "reset") == 1 {
+            groupArray = []
+            totalTextField.text = ""
+            saveData.removeObject(forKey: "reset")
+        }else if saveData.array(forKey: "group") != nil {
             groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
         }
         
@@ -72,9 +77,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let nowIndexPathDictionary = groupArray[indexPath.row]
         //cell.todoLabel.text = nowIndexPathDictionary
         
+       
         cell.groupLabel.text = nowIndexPathDictionary["group"]
         cell.memberLabel.text = nowIndexPathDictionary["member"]
         cell.ratioLabel.text = nowIndexPathDictionary["ratio"]
+        
+        
         
         // Configure the cell...
         
@@ -145,10 +153,21 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func go() {
+        if totalTextField.text!=="" {
+            let alert: UIAlertController = UIAlertController(title: "必須項目", message: "合計金額を入力してください", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(
+                    title: "OK", style: .default, handler: {action in
+                        print("ボタンが押された")
+                }
+            ))
+            present(alert, animated: true, completion: nil)
+        }else{
         saveData.set(String(totalTextField.text!), forKey: "total")
         //print(totalTextField.text!)
-        
+        self.view.endEditing(true)
         self.performSegue(withIdentifier: "account", sender: nil)
+        }
     }
 }
 
