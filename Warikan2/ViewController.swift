@@ -153,7 +153,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     @IBAction func go() {
-        if totalTextField.text!=="" {
+        if groupArray.count == 0 {
+            let alert: UIAlertController = UIAlertController(title: "必須項目", message: "グループを追加してください", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(
+                    title: "OK", style: .default, handler: {action in
+                        print("ボタンが押された")
+                }
+            ))
+            present(alert, animated: true, completion: nil)
+        }else if totalTextField.text!=="" {
             let alert: UIAlertController = UIAlertController(title: "必須項目", message: "合計金額を入力してください", preferredStyle: .alert)
             alert.addAction(
                 UIAlertAction(

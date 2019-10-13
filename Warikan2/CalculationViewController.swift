@@ -138,8 +138,8 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         //saveData.removeObject(forKey: "total")
         let hantei: Int = 1
         saveData.set(hantei, forKey: "reset")
-        //navigationController?.popViewController(animated: true)
-        self.dismiss(animated: true, completion: nil)
+        navigationController?.popViewController(animated: true)
+        //self.dismiss(animated: true, completion: nil)
         
     }
     //let closure = { print("クロージャテスト") }

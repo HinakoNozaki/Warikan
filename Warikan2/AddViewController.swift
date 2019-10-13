@@ -61,14 +61,31 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
     }
     
     @IBAction func save() {
+        
+        if groupTextField.text!=="" || memberTextField.text!=="" || ratioTextField.text!=="" {
+            let alert: UIAlertController = UIAlertController(title: "必須項目", message: "グループ・人数・比率は必須項目です", preferredStyle: .alert)
+            alert.addAction(
+                UIAlertAction(
+                    title: "OK", style: .default, handler: {action in
+                        print("ボタンが押された")
+                }
+            ))
+            present(alert, animated: true, completion: nil)
+        }else{
         let groupDictionary = ["group": groupTextField.text!, "member":String(memberTextField.text!), "ratio":String(ratioTextField.text!)]
         
         if saveData.string(forKey: "number") != nil {
             let num: Int = saveData.integer(forKey: "number")
+            //print("a")
+            //print(num)
+            
             groupArray[num] = groupDictionary
             //print(groupDictionary)
             //print(groupArray[num])
             saveData.removeObject(forKey: "number")
+            //let n: Int = saveData.integer(forKey: "number")
+            
+            //print(n)
         }else {
             groupArray.append(groupDictionary)
         }
@@ -84,6 +101,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
         
         self.dismiss(animated: true, completion: nil)
         //navigationController?.popViewController(animated: true)
+        }
     }
     
     /*

@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB1289D9235221DD003A95F4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2637902343211000297F1A /* Assets.xcassets */; };
 		BB2637882343210D00297F1A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637872343210D00297F1A /* AppDelegate.swift */; };
 		BB26378A2343210D00297F1A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637892343210D00297F1A /* SceneDelegate.swift */; };
 		BB26378C2343210D00297F1A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26378B2343210D00297F1A /* ViewController.swift */; };
 		BB26378F2343210D00297F1A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB26378D2343210D00297F1A /* Main.storyboard */; };
-		BB2637912343211000297F1A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BB2637902343211000297F1A /* Assets.xcassets */; };
 		BB2637942343211000297F1A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BB2637922343211000297F1A /* LaunchScreen.storyboard */; };
 		BB26379F2343211000297F1A /* Warikan2Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26379E2343211000297F1A /* Warikan2Tests.swift */; };
 		BB2637AA2343211000297F1A /* Warikan2UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2637A92343211000297F1A /* Warikan2UITests.swift */; };
@@ -245,7 +245,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB2637942343211000297F1A /* LaunchScreen.storyboard in Resources */,
-				BB2637912343211000297F1A /* Assets.xcassets in Resources */,
+				BB1289D9235221DD003A95F4 /* Assets.xcassets in Resources */,
 				BB26378F2343210D00297F1A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,7 +457,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -475,7 +476,8 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2;
+				MARKETING_VERSION = 1.0.1;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -495,7 +497,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -516,7 +518,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2Tests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2Tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -535,7 +537,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -554,7 +556,7 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = aaa.Warikan2UITests;
+				PRODUCT_BUNDLE_IDENTIFIER = app.nozaki.ohisama.Warikan2UITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
