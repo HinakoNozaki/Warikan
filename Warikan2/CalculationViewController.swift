@@ -17,15 +17,10 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     
     let saveData = UserDefaults.standard
     
-    
-    
     var bunbo: Int = 0
-    //var totalMember: Int = 0
     var total: String = ""
     var firstTotal: Int = 0
     var nowTotal: Int = 0
-    //var zerowari: Int = 0
-    //var nowChange: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,8 +32,6 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
             total = saveData.string(forKey: "total")!
             saveData.removeObject(forKey: "total")
         }
-        //cell.todoLabel.text = nowIndexPathDictionary
-        //var bunbo: Int = 0
         
         // Do any additional setup after loading the view.
     }
@@ -55,17 +48,20 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         for i in 0..<groupArray.count{
             let groupInformation = groupArray[i]
             bunbo += (Int(groupInformation["member"]!) ?? 0)*(Int(groupInformation["ratio"]!) ?? 0)
-            //totalMember += Int(groupInformation["member"]!) ?? 0
-            //print(totalMember)
+            
             if bunbo == 0{
                 bunbo = 1
             }
+            
         }
-        //print(bunbo)
         
+        for i in 0..<groupArray.count {
+            let groupInformation = groupArray[i]
+            let ratio: Int = (Int(groupInformation["ratio"]!) ?? 0)
+            let money: Int = (Int(total) ?? 0) * ratio/bunbo
+            firstTotal+=money*(Int(groupInformation["member"]!) ?? 0)
+        }
         
-        //        tableView.estimatedRowHeight = 100
-        //        tableView.rowHeight = UITableView.automaticDimension
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -83,31 +79,20 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "calculation", for: indexPath) as! CalculationTableViewCell
         
-        var upClosure = { (member: String) -> Void in
-            //totalLabel.text = 1
+        let upClosure = { (member: String) -> Void in
+            
             let nowTotalLabel = Int(self.totalLabel.text!)
             self.totalLabel.text = String(nowTotalLabel! + Int(member)!)
             let nowChangeLabel = Int(self.changeLabel.text!)
             self.changeLabel.text = String(nowChangeLabel! + Int(member)!)
         }
-        var downClosure = { (member: String) -> Void in
-            //totalLabel.text = 1
+        let downClosure = { (member: String) -> Void in
+            
             let nowTotalLabel = Int(self.totalLabel.text!)
             self.totalLabel.text = String(nowTotalLabel! - Int(member)!)
             let nowChangeLabel = Int(self.changeLabel.text!)
             self.changeLabel.text = String(nowChangeLabel! - Int(member)!)
         }
-        /*
-         if saveData.string(forKey: "total") != nil {
-         let total = saveData.string(forKey: "total")
-         saveData.removeObject(forKey: "total")
-         }
-         
-         for i in 0..<groupArray.count{
-         
-         }*/
-        //print(total)
-        
         
         let groupInformation = groupArray[indexPath.row]
         let ratio: Int = (Int(groupInformation["ratio"]!) ?? 0)
@@ -116,16 +101,12 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         cell.moneyLabel.text = String(money)
         cell.memberLabel.text = groupInformation["member"]
         
-        firstTotal+=money*(Int(groupInformation["member"]!) ?? 0)
-        //print(nowTotal)
         totalLabel.text = String(firstTotal)
         changeLabel.text = String(firstTotal-(Int(total) ?? 0))
         
+        
         cell.upClosure=upClosure
         cell.downClosure=downClosure
-        
-        
-        //closure()
         
         // Configure the cell...
         
@@ -142,11 +123,6 @@ class CalculationViewController: UIViewController, UITableViewDataSource, UITabl
         //self.dismiss(animated: true, completion: nil)
         
     }
-    //let closure = { print("クロージャテスト") }
-    
-    
-    
-    
     
     /*
      // MARK: - Navigation

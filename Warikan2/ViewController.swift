@@ -13,12 +13,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var totalTextField: UITextField!
     
     var groupArray: [Dictionary<String, String>] = []
-    //var memberArray: [String] = []
-    //var ratioArray: [String] = []
-    //override var title: [String, String]
     
     let saveData = UserDefaults.standard
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +22,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         saveData.removeObject(forKey: "group")
+        /*
+         totalTextField.layer.borderWidth = 1.0
+         totalTextField.layer.cornerRadius = 10
+         totalTextField.layer.masksToBounds = true
+         */
+        /*// 角丸
+         totalTextField.layer.cornerRadius = 10
+         totalTextField.layer.masksToBounds = true
+         totalTextField.layer.borderColor = UIColor.white.cgColor
+         */
         
         //totalTextField.delegate = self
         totalTextField.delegate = self as? UITextFieldDelegate
@@ -48,9 +54,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         tableView.reloadData()
         
-        
-        //        tableView.estimatedRowHeight = 100
-        //        tableView.rowHeight = UITableView.automaticDimension
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,8 +78,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! ListTableViewCell
         
         let nowIndexPathDictionary = groupArray[indexPath.row]
-        //cell.todoLabel.text = nowIndexPathDictionary
-        
         
         cell.groupLabel.text = nowIndexPathDictionary["group"]
         cell.memberLabel.text = nowIndexPathDictionary["member"]
@@ -104,8 +105,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         
         let word = groupArray[indexPath.row]
         let num = indexPath.row
-        //print(word)
-        //print(num)
+        
         saveData.set(word, forKey: "change")
         saveData.set(num, forKey: "number")
         performSegue(withIdentifier: "edit", sender: nil)

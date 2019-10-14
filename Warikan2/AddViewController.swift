@@ -14,11 +14,8 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
     @IBOutlet weak var ratioTextField: UITextField!
     
     var groupArray: [Dictionary<String, String>] = []
-    //var memberArray: [String] = []
-    //var ratioArray: [String] = []
     
     let saveData = UserDefaults.standard
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +24,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
         self.memberTextField.keyboardType = UIKeyboardType.numberPad
         self.ratioTextField.keyboardType = UIKeyboardType.numberPad
         if saveData.dictionary(forKey: "change") != nil {
-            //groupTextField.text = saveData.string(forKey: "change")
+            
             let dic = saveData.dictionary(forKey: "change")
             groupTextField.text = dic?["group"] as? String
             memberTextField.text = dic?["member"] as? String
@@ -37,12 +34,7 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
         if saveData.array(forKey: "group") != nil {
             groupArray = saveData.array(forKey: "group") as! [Dictionary<String, String>]
         }
-        /*if saveData.array(forKey: "member") != nil {
-         memberArray = saveData.array(forKey: "member") as! [String]
-         }
-         if saveData.array(forKey: "ratio") != nil {
-         ratioArray = saveData.array(forKey: "ratio") as! [String]
-         }*/
+        
         // Do any additional setup after loading the view.
     }
     
@@ -72,35 +64,27 @@ class AddViewController: UIViewController, UITextFieldDelegate  {
             ))
             present(alert, animated: true, completion: nil)
         }else{
-        let groupDictionary = ["group": groupTextField.text!, "member":String(memberTextField.text!), "ratio":String(ratioTextField.text!)]
-        
-        if saveData.string(forKey: "number") != nil {
-            let num: Int = saveData.integer(forKey: "number")
-            //print("a")
-            //print(num)
+            let groupDictionary = ["group": groupTextField.text!, "member":String(memberTextField.text!), "ratio":String(ratioTextField.text!)]
             
-            groupArray[num] = groupDictionary
-            //print(groupDictionary)
-            //print(groupArray[num])
-            saveData.removeObject(forKey: "number")
-            //let n: Int = saveData.integer(forKey: "number")
+            if saveData.string(forKey: "number") != nil {
+                let num: Int = saveData.integer(forKey: "number")
+                
+                groupArray[num] = groupDictionary
+                
+                saveData.removeObject(forKey: "number")
+                
+            }else {
+                groupArray.append(groupDictionary)
+            }
             
-            //print(n)
-        }else {
-            groupArray.append(groupDictionary)
-        }
-        //memberArray.append(memberTextField.text!)
-        //ratioArray.append(ratioTextField.text!)
-        saveData.set(groupArray, forKey: "group")
-        //saveData.set(memberArray, forKey: "member")
-        //saveData.set(ratioArray, forKey: "ratio")
-        //print(groupArray)
-        groupTextField.text = ""
-        memberTextField.text = ""
-        ratioTextField.text = ""
-        
-        self.dismiss(animated: true, completion: nil)
-        //navigationController?.popViewController(animated: true)
+            saveData.set(groupArray, forKey: "group")
+            
+            groupTextField.text = ""
+            memberTextField.text = ""
+            ratioTextField.text = ""
+            
+            self.dismiss(animated: true, completion: nil)
+            //navigationController?.popViewController(animated: true)
         }
     }
     
